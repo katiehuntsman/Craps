@@ -9,20 +9,12 @@ import java.util.Scanner;
 
 public class Craps
 {
-    public static void main(String[] args)
+    public static void instructions()
     {
         Scanner in = new Scanner(System.in);
-        String play = "y"; 
-        int r1 = 0;
-        int r2 = 0; 
-        int point = 0; 
-        String inst = "n";
-        System.out.print("Let's play craps!");
-        
-        //instructions 
         System.out.print("Would you like instructions? (Y/N)");
-        inst = in.next();
-        if (inst.equalsIgnoreCase("y"))
+        String inst = in.nextLine();
+        if (inst.substring(0,1).equalsIgnoreCase("y") || inst.equals(""))
         {
             System.out.println("1. Roll two six-sided dice.");
             System.out.println("2. a. On first roll, if you get a 7 or 11 you win!");
@@ -35,15 +27,44 @@ public class Craps
         System.out.println();
         System.out.println("Good luck!");
         System.out.println();
-        
-        
+    }
+
+    public static void main(String[] args)
+    {
+        Scanner in = new Scanner(System.in);
+        Die die = new Die();
+        String play = "y"; 
+        int roll = 0;
+        int point = 0; 
+        System.out.print("Let's play Craps! ");
+        instructions();
+
         while (play.equalsIgnoreCase("y"))
         {
             //first roll 
-            
-            
+            System.out.println("Press <Enter> to roll. ");
+            String pause = in.nextLine();
+            System.out.println("Your first roll is: " + roll);
+
+            if (roll == 7 || roll == 11)
+            {
+                System.out.println("You win!");
+            }
+            else if (roll == 2 || roll == 3 || roll == 12)
+            {
+                System.out.println("You lose!");
+            }
+            else
+            {
+                System.out.println("That's your point.");
+                System.out.println("Let's see if you can roll it again before you roll a 7!");
+                
+                
+            }
+
             System.out.print("Would you like to play again? (Y/N): ");
             play = in.next();
         }
+        System.out.println("Thanks for playing! Gambling is bad, kids. Peace.");
     }
 }

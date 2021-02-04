@@ -22,9 +22,10 @@ public class Die
      * randomly generates a new roll
      *
      */
-    public void roll()
+    public int roll()
     {
         roll = (int)(Math.random() * 6 + 1); //1 through 6
+        return roll;
     }
     
     /**
