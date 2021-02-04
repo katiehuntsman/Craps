@@ -29,21 +29,27 @@ public class Craps
         System.out.println();
     }
 
+    public static int userRoll()
+    {
+        Die die = new Die();
+        Scanner in = new Scanner(System.in);
+        System.out.println("Press <Enter> to roll. ");
+        String pause = in.nextLine();
+        int rolls = die.roll() + die.roll();
+        System.out.println("You rolled: " + rolls);
+        return rolls;
+    }
+
     public static void main(String[] args)
     {
         Scanner in = new Scanner(System.in);
-        Die die = new Die();
         String play = "y"; 
         System.out.print("Let's play Craps! ");
         instructions();
 
         while (play.equalsIgnoreCase("y"))
         {
-            //first roll 
-            System.out.println("Press <Enter> to roll. ");
-            String pause = in.nextLine();
-            int rolls = die.roll() + die.roll(); 
-            System.out.println("Your first roll is: " + rolls);
+            int rolls = userRoll();
 
             if (rolls == 7 || rolls == 11)
             {
@@ -58,18 +64,11 @@ public class Craps
                 System.out.println("That's your point.");
                 System.out.println("Let's see if you can roll it again before you roll a 7!");
                 int point = rolls; 
-
-                System.out.println("Press <Enter> to roll. ");
-                pause = in.nextLine();
-                rolls = die.roll() + die.roll(); 
-                System.out.println("You rolled: " + rolls);
+                rolls = userRoll();
 
                 while (rolls != point && rolls != 7)
                 {
-                    System.out.println("Press <Enter> to roll. ");
-                    pause = in.nextLine();
-                    rolls = die.roll() + die.roll(); 
-                    System.out.println("You rolled: " + rolls);
+                    rolls = userRoll();
                 }
                 if (rolls == 7)
                 {
@@ -83,7 +82,7 @@ public class Craps
             System.out.print("Would you like to play again? (Y/N): ");
             play = in.next();
         }
-       
+
         System.out.println("Thanks for playing! Gambling is bad, kids. Peace.");
     }
 }
