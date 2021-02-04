@@ -34,8 +34,6 @@ public class Craps
         Scanner in = new Scanner(System.in);
         Die die = new Die();
         String play = "y"; 
-        int roll = 0;
-        int point = 0; 
         System.out.print("Let's play Craps! ");
         instructions();
 
@@ -44,13 +42,14 @@ public class Craps
             //first roll 
             System.out.println("Press <Enter> to roll. ");
             String pause = in.nextLine();
-            System.out.println("Your first roll is: " + roll);
+            int rolls = die.roll() + die.roll(); 
+            System.out.println("Your first roll is: " + rolls);
 
-            if (roll == 7 || roll == 11)
+            if (rolls == 7 || rolls == 11)
             {
-                System.out.println("You win!");
+                System.out.println("You win! Wow, first try.");
             }
-            else if (roll == 2 || roll == 3 || roll == 12)
+            else if (rolls == 2 || rolls == 3 || rolls == 12)
             {
                 System.out.println("You lose!");
             }
@@ -58,13 +57,33 @@ public class Craps
             {
                 System.out.println("That's your point.");
                 System.out.println("Let's see if you can roll it again before you roll a 7!");
-                
-                
-            }
+                int point = rolls; 
 
+                System.out.println("Press <Enter> to roll. ");
+                pause = in.nextLine();
+                rolls = die.roll() + die.roll(); 
+                System.out.println("You rolled: " + rolls);
+
+                while (rolls != point && rolls != 7)
+                {
+                    System.out.println("Press <Enter> to roll. ");
+                    pause = in.nextLine();
+                    rolls = die.roll() + die.roll(); 
+                    System.out.println("You rolled: " + rolls);
+                }
+                if (rolls == 7)
+                {
+                    System.out.println("You lose.");
+                }
+                else
+                {
+                    System.out.println("You win!");
+                }
+            }
             System.out.print("Would you like to play again? (Y/N): ");
             play = in.next();
         }
+       
         System.out.println("Thanks for playing! Gambling is bad, kids. Peace.");
     }
 }

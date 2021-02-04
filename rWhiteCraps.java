@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class rWhiteCraps here.
+ * Mr. White's version of Craps from the lecture.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Richard White
+ * @version 2021-02-04
  */
 public class rWhiteCraps
 {
