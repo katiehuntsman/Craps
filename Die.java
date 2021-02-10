@@ -7,7 +7,6 @@
  */
 public class Die
 {
-    // instance variables - replace the example below with your own
     private int roll;
 
     /**
@@ -21,6 +20,7 @@ public class Die
     /**
      * randomly generates a new roll
      *
+     *@return    the generated roll value
      */
     public int roll()
     {
