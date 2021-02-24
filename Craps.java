@@ -87,3 +87,17 @@ public class Craps
         System.out.println("See you next time! Gambling is bad, kids. Peace.");
     }
 }
+
+
+/* 
+
+COMMENTS FROM THE INSTRUCTOR:
+
+Such clean code here in this version of the game. Nicely done, from
+the default (Y/n) feature to the "Gambling is bad" message at the end.
+Nicely done!
+
+SCORE: 16/15
+
+*/
+
